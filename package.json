@@ -1,0 +1,24 @@
+{
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node-dev chatbot.ts",
+    "test": "tsc && eslint *.ts"
+  },
+  "dependencies": {
+    "config": "^3.3.6",
+    "config-reloadable": "^1.0.8",
+    "node-schedule": "^2.0.0",
+    "node-wav-player": "^0.2.0",
+    "voice-text": "^0.1.2"
+  },
+  "devDependencies": {
+    "@types/node-schedule": "^1.3.2",
+    "@typescript-eslint/eslint-plugin": "^4.28.2",
+    "@typescript-eslint/parser": "^4.28.2",
+    "eslint": "^7.30.0",
+    "eslint-plugin-node": "^11.1.0",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.3.5"
+  }
+}
