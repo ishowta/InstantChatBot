@@ -8,15 +8,25 @@ const config = conf();
 
 const voiceText = new VoiceText(config.get("voiceTextApiKey")); //Voice Text API key
 
-const speak = async (rawMessage: string, pitch = 100, speed = 100) => {
-  const message =
-    rawMessage[rawMessage.length - 1] === "。" ? rawMessage : `${rawMessage}。`;
+const speak = async (
+  message: string,
+  pitch = 100,
+  speed = 100,
+  volume = 50,
+  emotion?: {
+    type: "happiness" | "anger" | "sadness";
+    level: 1 | 2 | 3 | 4;
+  }
+) => {
   console.log(message);
   const buffer = await voiceText.fetchBuffer(message, {
     format: "wav",
     speaker: config.get("voiceType"),
     pitch,
     speed,
+    volume,
+    emotion: emotion?.type,
+    emotion_level: emotion?.level,
   });
   writeFileSync("out/voice.wav", buffer);
   player.play({
@@ -24,6 +34,8 @@ const speak = async (rawMessage: string, pitch = 100, speed = 100) => {
   });
 };
 
-schedule.scheduleJob("0 0,15,30,45 * * * *", (fireDate) => {
+const every10sec = "0,10,20,30,40,50 * * * * *";
+const every15min = "0 0,15,30,45 * * * *";
+schedule.scheduleJob(every15min, (fireDate) => {
   speak(`現在の時刻は、${`${fireDate}`.substr(16, 8)}です。`);
 });
