@@ -6,10 +6,12 @@
     "test": "tsc && eslint *.ts"
   },
   "dependencies": {
+    "@types/ping": "^0.2.1",
     "config": "^3.3.6",
     "config-reloadable": "^1.0.8",
     "node-schedule": "^2.0.0",
     "node-wav-player": "^0.2.0",
+    "ping": "^0.4.1",
     "voice-text": "^0.1.2"
   },
   "devDependencies": {

@@ -1,4 +1,4 @@
 /node_modules
 /out
 *.log
-default.json
+/config/local.json
